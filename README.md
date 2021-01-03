@@ -1,16 +1,15 @@
 # gcg_expected_damage
 
-A new Flutter project.
+걸카페건 각종 계산기
 
-## Getting Started
+## 기능
 
-This project is a starting point for a Flutter application.
+[1] 팬텀 뱅가드 필요 충전량 계산
 
-A few resources to get you started if this is your first Flutter project:
+추가 예정
+- [모의전 점수 계산]
+- [무기 개조 대미지 기댓값 계산]
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## 링크
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [아카라이브 걸카페건 채널](https://arca.live/b/girlcafe)

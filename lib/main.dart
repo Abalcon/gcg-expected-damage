@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:gcg_expected_damage/batteryCalculator.dart';
 import 'package:gcg_expected_damage/scoreCalculator.dart';
 import 'expectedDamage.dart';
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/expecteddamage': (context) => ExpectedDamage(),
         '/scorecalculator': (context) => ScoreCalculator(),
+        '/batterycalculator': (context) => BatteryCalculator(),
       },
       onUnknownRoute: (RouteSettings settings) {
         return MaterialPageRoute<void>(
@@ -71,19 +73,19 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20.0),
               child: SizedBox(
-                width: MediaQuery.of(context).size.width / 3,
+                width: MediaQuery.of(context).size.width / 2,
                 child: RaisedButton(
                   color: Colors.blue,
-                  //textColor: Colors.white,
+                  textColor: Colors.white,
                   disabledColor: Colors.grey,
                   disabledTextColor: Colors.black,
                   padding: EdgeInsets.all(30.0),
                   splashColor: Colors.blueAccent,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/scorecalculator');
+                    Navigator.pushNamed(context, '/batterycalculator');
                   },
                   child: Text(
-                    "모의 점수 계산기",
+                    "팬텀 전력 계산기",
                     style: TextStyle(fontSize: 20.0),
                   ),
                 ),
@@ -92,19 +94,44 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20.0),
               child: SizedBox(
-                width: MediaQuery.of(context).size.width / 3,
+                width: MediaQuery.of(context).size.width / 2,
                 child: RaisedButton(
                   color: Colors.blue,
-                  //textColor: Colors.white,
+                  textColor: Colors.white,
                   disabledColor: Colors.grey,
                   disabledTextColor: Colors.black,
                   padding: EdgeInsets.all(30.0),
                   splashColor: Colors.blueAccent,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/expecteddamage');
+                    ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text('모의 점수 계산기 준비중')));
+                    //Navigator.pushNamed(context, '/scorecalculator');
                   },
                   child: Text(
-                    "대미지 기댓값",
+                    "모의 점수 계산기 (준비중)",
+                    style: TextStyle(fontSize: 20.0),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 20.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: RaisedButton(
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  disabledColor: Colors.grey,
+                  disabledTextColor: Colors.black,
+                  padding: EdgeInsets.all(30.0),
+                  splashColor: Colors.blueAccent,
+                  onPressed: () {
+                    ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text('대미지 기댓값 준비중')));
+                    //Navigator.pushNamed(context, '/expecteddamage');
+                  },
+                  child: Text(
+                    "대미지 기댓값 (준비중)",
                     style: TextStyle(fontSize: 20.0),
                   ),
                 ),
