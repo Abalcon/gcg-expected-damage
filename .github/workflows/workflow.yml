@@ -17,9 +17,9 @@ jobs:
       - run: flutter config --enable-web
       - run: flutter pub get
       - run: flutter build web --release
-        working-directory: ./AYBABTU/GCG/geg_expected_damage
+        working-directory: ./AYBABTU/GCG/gcg_expected_damage
       - run: |
-          cd AYBABTU/GCG/geg_expected_damage/build/web
+          cd AYBABTU/GCG/gcg_expected_damage/build/web
           git init
           git config --global user.email extinbase@naver.com
           git config --global user.name Abalcon
