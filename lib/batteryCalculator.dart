@@ -57,8 +57,7 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
   double dailyRequiredCharge;
 
   Widget showDailyRequiredCharge() {
-    if (dailyRequiredCharge == null)
-      return Text('');
+    if (dailyRequiredCharge == null) return Text('');
 
     if (dailyRequiredCharge > 0) {
       String additionalNote = '';
@@ -67,14 +66,13 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
       else if (dailyRequiredCharge > 900) {
         var offset = dailyRequiredCharge - 900;
         var requiredTwentyChargeDays = (offset * seasonLength / 1200).ceil();
-        additionalNote = '20충은 총 $requiredTwentyChargeDays일 필요하며, 나머지는 10충 이내로 하면 됩니다';
-      }
-      else if (dailyRequiredCharge > 120 && dailyRequiredCharge < 900) {
+        additionalNote =
+            '20충은 총 $requiredTwentyChargeDays일 필요하며, 나머지는 10충 이내로 하면 됩니다';
+      } else if (dailyRequiredCharge > 120 && dailyRequiredCharge < 900) {
         var offset = dailyRequiredCharge - 120;
         var requiredTenChargeDays = (offset * seasonLength / 780).ceil();
         additionalNote = '10충은 총 $requiredTenChargeDays일 필요하며, 나머지는 2충하면 됩니다';
-      }
-      else
+      } else
         additionalNote = '하루 2충으로 충분합니다';
 
       return Column(
@@ -84,16 +82,16 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
-            )
+            ),
           ),
           Text(
             additionalNote,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
-            )
+            ),
           ),
-        ]
+        ],
       );
     }
 
@@ -102,7 +100,7 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
       style: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18,
-      )
+      ),
     );
   }
 
@@ -120,32 +118,43 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
         requiredConsumption = phantomEasy + phantomNormal;
         break;
       default:
-        requiredConsumption = phantomHard * (phantomNumber - 2) + phantomEasy + phantomNormal;
+        requiredConsumption =
+            phantomHard * (phantomNumber - 2) + phantomEasy + phantomNormal;
     }
-    
-    final int naturalCharge = haveMonthlyPass ?
-      basicCharge + monthlyDailyCharge : basicCharge;
-    
-    int crystalRequire = getRequiredbyDifficulty(_crystalDifficulty.text);
-    int crystalConsumption = (crystalRequire > 0) ?
-      crystalRequire * int.parse(_crystalNumber.text) : int.parse(_crystalNumber.text);
-    int unitRequire = getRequiredbyDifficulty(_unitDifficulty.text);
-    int unitConsumption = (unitRequire > 0) ?
-      unitRequire * int.parse(_unitNumber.text) : int.parse(_unitNumber.text);
-    int weaponRequire = getRequiredbyDifficulty(_weaponDifficulty.text);
-    int weaponConsumption = (weaponRequire > 0) ?
-      weaponRequire * int.parse(_weaponNumber.text) : int.parse(_weaponNumber.text);
-    int limitRequire = getRequiredbyDifficulty(_limitDifficulty.text);
-    int limitConsumption = (limitRequire > 0) ?
-      limitRequire * int.parse(_limitNumber.text) : int.parse(_limitNumber.text);
-    int coopRequire = getRequiredbyDifficulty(_coopDifficulty.text);
-    int coopConsumption = (coopRequire > 0) ?
-      coopRequire * int.parse(_coopNumber.text) : int.parse(_coopNumber.text);
-    int eventConsumption = int.parse(_eventController.text);
-    final int otherConsumption = crystalConsumption + unitConsumption + weaponConsumption
-      + limitConsumption + coopConsumption + eventConsumption;
 
-    final int requiredCharge = requiredConsumption + (otherConsumption - naturalCharge) * seasonLength;
+    final int naturalCharge =
+        haveMonthlyPass ? basicCharge + monthlyDailyCharge : basicCharge;
+
+    int crystalRequire = getRequiredbyDifficulty(_crystalDifficulty.text);
+    int crystalConsumption = (crystalRequire > 0)
+        ? crystalRequire * int.parse(_crystalNumber.text)
+        : int.parse(_crystalNumber.text);
+    int unitRequire = getRequiredbyDifficulty(_unitDifficulty.text);
+    int unitConsumption = (unitRequire > 0)
+        ? unitRequire * int.parse(_unitNumber.text)
+        : int.parse(_unitNumber.text);
+    int weaponRequire = getRequiredbyDifficulty(_weaponDifficulty.text);
+    int weaponConsumption = (weaponRequire > 0)
+        ? weaponRequire * int.parse(_weaponNumber.text)
+        : int.parse(_weaponNumber.text);
+    int limitRequire = getRequiredbyDifficulty(_limitDifficulty.text);
+    int limitConsumption = (limitRequire > 0)
+        ? limitRequire * int.parse(_limitNumber.text)
+        : int.parse(_limitNumber.text);
+    int coopRequire = getRequiredbyDifficulty(_coopDifficulty.text);
+    int coopConsumption = (coopRequire > 0)
+        ? coopRequire * int.parse(_coopNumber.text)
+        : int.parse(_coopNumber.text);
+    int eventConsumption = int.parse(_eventController.text);
+    final int otherConsumption = crystalConsumption +
+        unitConsumption +
+        weaponConsumption +
+        limitConsumption +
+        coopConsumption +
+        eventConsumption;
+
+    final int requiredCharge =
+        requiredConsumption + (otherConsumption - naturalCharge) * seasonLength;
     return requiredCharge;
   }
 
@@ -167,11 +176,15 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
     }
   }
 
-  Widget bountySetting(String name, TextEditingController difficulty, TextEditingController ctrl) {
-    var textList = (name == '협동 출격') ?
-      ['쉬움', '보통', '어려움', '악몽', '지옥', '직접 입력'] : ['쉬움', '보통', '어려움', '악몽', '지옥', '극악', '직접 입력'];
+  Widget bountySetting(String name, TextEditingController difficulty,
+      TextEditingController ctrl) {
+    var textList = (name == '협동 출격')
+        ? ['쉬움', '보통', '어려움', '악몽', '지옥', '직접 입력']
+        : ['쉬움', '보통', '어려움', '악몽', '지옥', '극악', '직접 입력'];
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 5.0,),
+      padding: EdgeInsets.symmetric(
+        vertical: 5.0,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -184,11 +197,14 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
           ),
           VerticalDivider(),
           Container(
-            width: 90,
+            width: 100,
             child: DropdownButtonFormField<String>(
               isExpanded: false,
               value: difficulty.text,
-              icon: Icon(Icons.arrow_downward, color: Colors.lightBlue,),
+              icon: Icon(
+                Icons.arrow_downward,
+                color: Colors.lightBlue,
+              ),
               iconSize: 24,
               elevation: 16,
               style: TextStyle(color: Colors.blue),
@@ -196,7 +212,10 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
                 fillColor: Colors.blueAccent,
                 border: inputBorder,
                 focusedBorder: inputBorder,
-                contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
+                contentPadding: EdgeInsets.symmetric(
+                  vertical: 5.0,
+                  horizontal: 5.0,
+                ),
               ),
               onChanged: (String newValue) {
                 setState(() {
@@ -213,7 +232,7 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
           ),
           VerticalDivider(),
           Container(
-            width: 80,
+            width: 100,
             child: TextFormField(
               controller: ctrl,
               keyboardType: TextInputType.number,
@@ -221,7 +240,13 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
                 hintText: '횟수 입력',
                 border: inputBorder,
                 focusedBorder: inputBorder,
-                contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
+                contentPadding: EdgeInsets.symmetric(
+                  vertical: 5.0,
+                  horizontal: 5.0,
+                ),
+                errorStyle: TextStyle(
+                  fontSize: 10,
+                ),
               ),
               validator: (value) {
                 if (value.isEmpty) {
@@ -285,7 +310,13 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
                               hintText: '횟수 입력',
                               border: inputBorder,
                               focusedBorder: inputBorder,
-                              contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 5.0,
+                                horizontal: 5.0,
+                              ),
+                              errorStyle: TextStyle(
+                                fontSize: 10,
+                              ),
                             ),
                             validator: (value) {
                               if (value.isEmpty) {
@@ -330,7 +361,7 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
                     Padding(
                       padding: EdgeInsets.only(bottom: 8),
                       child: Text(
-                        '바운티 미션',
+                        '일일 바운티 미션',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -347,7 +378,7 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '이벤트 소모 전력',
+                          '일일 이벤트 소모 전력',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
@@ -363,13 +394,19 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
                               hintText: '소모 전력',
                               border: inputBorder,
                               focusedBorder: inputBorder,
-                              contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 5.0,
+                                horizontal: 5.0,
+                              ),
+                              errorStyle: TextStyle(
+                                fontSize: 10,
+                              ),
                             ),
                             validator: (value) {
                               if (value.isEmpty) {
                                 return '이벤트 소모 전력을 입력하세요';
                               }
-                              
+
                               var result = int.tryParse(value);
                               if (result == null || result < 0) {
                                 return '음이 아닌 정수를 입력하세요';
@@ -394,10 +431,12 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
                           splashColor: Colors.blueAccent,
                           onPressed: () {
                             if (_formKey.currentState.validate()) {
-                              final int requiredCharge = getTotalRequiredCharge();
+                              final int requiredCharge =
+                                  getTotalRequiredCharge();
 
                               setState(() {
-                                dailyRequiredCharge = requiredCharge / seasonLength;
+                                dailyRequiredCharge =
+                                    requiredCharge / seasonLength;
                               });
 
                               // ScaffoldMessenger.of(context)
