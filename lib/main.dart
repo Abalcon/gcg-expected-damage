@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0),
+              padding: EdgeInsets.symmetric(vertical: 20.0,),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 child: RaisedButton(
@@ -86,13 +86,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                   child: Text(
                     "팬텀 전력 계산기",
-                    style: TextStyle(fontSize: 20.0),
+                    style: TextStyle(fontSize: 20.0,),
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0),
+              padding: EdgeInsets.symmetric(vertical: 20.0,),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 child: RaisedButton(
@@ -103,19 +103,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: EdgeInsets.all(30.0),
                   splashColor: Colors.blueAccent,
                   onPressed: () {
-                    ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text('모의 점수 계산기 준비중')));
-                    //Navigator.pushNamed(context, '/scorecalculator');
+                    Navigator.pushNamed(context, '/scorecalculator');
                   },
                   child: Text(
-                    "모의 점수 계산기 (준비중)",
-                    style: TextStyle(fontSize: 20.0),
+                    "모의 점수 계산기",
+                    style: TextStyle(fontSize: 20.0,),
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0),
+              padding: EdgeInsets.symmetric(vertical: 20.0,),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 child: RaisedButton(
@@ -132,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                   child: Text(
                     "대미지 기댓값 (준비중)",
-                    style: TextStyle(fontSize: 20.0),
+                    style: TextStyle(fontSize: 20.0,),
                   ),
                 ),
               ),

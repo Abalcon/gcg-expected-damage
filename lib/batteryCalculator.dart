@@ -68,17 +68,19 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
         var requiredTwentyChargeDays = (offset * seasonLength / 1200).ceil();
         additionalNote =
             '20충은 총 $requiredTwentyChargeDays일 필요하며, 나머지는 10충 이내로 하면 됩니다';
-      } else if (dailyRequiredCharge > 120 && dailyRequiredCharge < 900) {
+      }
+      else if (dailyRequiredCharge > 120 && dailyRequiredCharge < 900) {
         var offset = dailyRequiredCharge - 120;
         var requiredTenChargeDays = (offset * seasonLength / 780).ceil();
         additionalNote = '10충은 총 $requiredTenChargeDays일 필요하며, 나머지는 2충하면 됩니다';
-      } else
+      }
+      else
         additionalNote = '하루 2충으로 충분합니다';
 
       return Column(
         children: [
           Text(
-            '하루에 필요한 충전량은 ${dailyRequiredCharge.ceil()} 입니다',
+            '하루에 필요한 전력 충전량은 ${dailyRequiredCharge.ceil()} 입니다',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
@@ -96,7 +98,7 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
     }
 
     return Text(
-      '충전할 필요가 없습니다',
+      '전력을 충전할 필요가 없습니다',
       style: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18,
@@ -119,11 +121,12 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
         break;
       default:
         requiredConsumption =
-            phantomHard * (phantomNumber - 2) + phantomEasy + phantomNormal;
+          phantomHard * (phantomNumber - 2) + phantomEasy + phantomNormal;
     }
 
-    final int naturalCharge =
-        haveMonthlyPass ? basicCharge + monthlyDailyCharge : basicCharge;
+    final int naturalCharge = haveMonthlyPass
+      ? basicCharge + monthlyDailyCharge
+      : basicCharge;
 
     int crystalRequire = getRequiredbyDifficulty(_crystalDifficulty.text);
     int crystalConsumption = (crystalRequire > 0)
@@ -438,9 +441,6 @@ class BatteryCalculatorFormState extends State<BatteryCalculatorForm> {
                                 dailyRequiredCharge =
                                     requiredCharge / seasonLength;
                               });
-
-                              // ScaffoldMessenger.of(context)
-                              //   .showSnackBar(SnackBar(content: Text('필요 전력 구현 예정입니다')));
                             }
                           },
                           child: Text(
