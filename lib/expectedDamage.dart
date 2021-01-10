@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'common.dart';
 
@@ -77,6 +79,11 @@ class ExpectedDamageFormState extends State<ExpectedDamageForm> {
   List<bool> _attributeSelect = List.generate(4, (_) => false);
   ExpectedRate objectiveResult;
 
+  double roundDouble(double value, int places) {
+    double mod = pow(10.0, places);
+    return ((value * mod).round().toDouble() / mod);
+  }
+
   // 대미지 배율 기댓값 계산
   Widget showExpectedDamage() {
     if (objectiveResult == null) return Text('');
@@ -86,8 +93,9 @@ class ExpectedDamageFormState extends State<ExpectedDamageForm> {
         bottom: 20.0,
       ),
       child: Text(
-        '무기 사격 대미지 DPS 배율 기댓값은 ${objectiveResult.weaponDPS}입니다' +
-            '\n스킬 대미지 배율 기댓값은 ${objectiveResult.skill}입니다',
+        '무기 사격 대미지 DPS 배율 기댓값은 ${roundDouble(objectiveResult.weaponDPS, 3)}입니다' +
+            '\n브레이버는 대략 6.1, 다른 샷건의 경우 5를 곱하면 원하는 값이 나옵니다' +
+            '\n스킬 대미지 배율 기댓값은 ${roundDouble(objectiveResult.skill, 4)}입니다',
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,
@@ -175,14 +183,14 @@ class ExpectedDamageFormState extends State<ExpectedDamageForm> {
     double baseDamage = (double.parse(_bdamController.text) / 100) *
         (1 + int.parse(_damageController.text) / 100) *
         (1 + int.parse(_shootController.text) / 100);
-    // TODO: 샷건의 경우 기본적으로 5를 곱해야한다
+    // TODO: 샷건의 경우 기본적으로 5를 곱해야한다. 브레이버의 경우는 대략 6.1
     double expRate = attributeRate * expectedCriticalDamage * jspBulletEffect;
     double weaponDPS = baseDamage * fireRate * expRate;
-    print('기초 대미지: $baseDamage');
-    print('사격 속도: $fireRate per second');
-    print('속성 보정: $attributeRate');
-    print('치명 기댓값: $expectedCriticalDamage');
-    print('대미지 증가: $jspBulletEffect');
+    debugPrint('기초 대미지: $baseDamage');
+    debugPrint('사격 속도: $fireRate per second');
+    debugPrint('속성 보정: $attributeRate');
+    debugPrint('치명 기댓값: $expectedCriticalDamage');
+    debugPrint('대미지 증가: $jspBulletEffect');
     return ExpectedRate(
         weaponDPS, expRate * (1 + int.parse(_skillController.text) / 100));
   }
@@ -905,8 +913,9 @@ class ExpectedDamageFormState extends State<ExpectedDamageForm> {
                             });
 
                             return;
-                            // ScaffoldMessenger.of(context)
-                            //   .showSnackBar(SnackBar(content: Text('대미지 계산 구현중')));
+                          } else if (_attributeSelect.every((sel) => !sel)) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('속성 보정을 선택하세요')));
                           }
                         },
                         child: Text(
