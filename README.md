@@ -1,4 +1,4 @@
-# gcg_expected_damage
+# gcg_calculator_collection
 
 걸카페건 각종 계산기
 

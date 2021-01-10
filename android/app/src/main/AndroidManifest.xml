@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.gcg_expected_damage">
+    package="stulti.gcg.calculator">
    <application
-        android:label="gcg_expected_damage"
+        android:label="gcg_calculator_collection"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

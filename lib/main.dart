@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:gcg_expected_damage/batteryCalculator.dart';
-import 'package:gcg_expected_damage/scoreCalculator.dart';
+import 'batteryCalculator.dart';
+import 'scoreCalculator.dart';
 import 'expectedDamage.dart';
 
 void main() {
@@ -71,7 +71,9 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0,),
+              padding: EdgeInsets.symmetric(
+                vertical: 20.0,
+              ),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 child: RaisedButton(
@@ -86,13 +88,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                   child: Text(
                     "팬텀 전력 계산기",
-                    style: TextStyle(fontSize: 20.0,),
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0,),
+              padding: EdgeInsets.symmetric(
+                vertical: 20.0,
+              ),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 child: RaisedButton(
@@ -107,13 +113,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                   child: Text(
                     "모의 점수 계산기",
-                    style: TextStyle(fontSize: 20.0,),
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0,),
+              padding: EdgeInsets.symmetric(
+                vertical: 20.0,
+              ),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 child: RaisedButton(
@@ -127,8 +137,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.pushNamed(context, '/expecteddamage');
                   },
                   child: Text(
-                    "대미지 기댓값",
-                    style: TextStyle(fontSize: 20.0,),
+                    "대미지 배율 기댓값 (beta)",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
                   ),
                 ),
               ),

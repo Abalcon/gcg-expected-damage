@@ -1,11 +1,11 @@
 {
-    "name": "gcg_expected_damage",
-    "short_name": "gcg_expected_damage",
+    "name": "gcg_calculator_collection",
+    "short_name": "gcg_cc",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "걸카페건 계산기",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -1,5 +1,5 @@
-name: gcg_expected_damage
-description: A new Flutter project.
+name: gcg_calculator_collection
+description: 걸카페건 계산기
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
