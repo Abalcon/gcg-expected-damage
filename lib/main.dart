@@ -124,12 +124,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: EdgeInsets.all(30.0),
                   splashColor: Colors.blueAccent,
                   onPressed: () {
-                    ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text('대미지 기댓값 준비중')));
-                    //Navigator.pushNamed(context, '/expecteddamage');
+                    Navigator.pushNamed(context, '/expecteddamage');
                   },
                   child: Text(
-                    "대미지 기댓값 (준비중)",
+                    "대미지 기댓값",
                     style: TextStyle(fontSize: 20.0,),
                   ),
                 ),
@@ -138,11 +136,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: Icon(Icons.add),
-      // ),
     );
   }
 }

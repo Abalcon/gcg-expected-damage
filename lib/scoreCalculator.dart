@@ -456,7 +456,7 @@ class SpeedrunFormState extends State<SpeedrunForm> {
                 controller: _timeController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  hintText: '목표 시간을 입력',
+                  hintText: '목표 시간을 초 단위로 입력',
                   border: inputBorder,
                   focusedBorder: inputBorder,
                 ),
