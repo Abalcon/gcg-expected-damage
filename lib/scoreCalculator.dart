@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gcg_calculator_collection/common/common.dart';
 import 'common.dart';
 
 class ScoreCalculator extends StatelessWidget {
@@ -6,6 +7,7 @@ class ScoreCalculator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ScoreCalculatorDetail(),
+      floatingActionButton: manualLinkButton(),
     );
   }
 }

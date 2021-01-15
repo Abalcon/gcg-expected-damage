@@ -8,7 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:gcg_expected_damage/main.dart';
+import 'package:gcg_calculator_collection/main.dart';
+import 'package:gcg_calculator_collection/expectedDamage.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
@@ -26,5 +27,14 @@ void main() {
     // Verify that our counter has incremented.
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
+  });
+
+  testWidgets('Expected damage rate verification', (WidgetTester tester) async {
+    await tester.pumpWidget(ExpectedDamage());
+
+    await tester.enterText(find.byKey(Key('baseDamage')), '274');
+    await tester.enterText(find.byKey(Key('baseFireRate')), '1');
+    await tester.enterText(find.byKey(Key('baseCritical')), '9');
+    await tester.enterText(find.byKey(Key('baseBreak')), '274');
   });
 }

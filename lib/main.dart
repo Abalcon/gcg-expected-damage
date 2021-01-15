@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'common/common.dart';
 import 'batteryCalculator.dart';
 import 'scoreCalculator.dart';
 import 'expectedDamage.dart';
@@ -148,6 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      floatingActionButton: manualLinkButton(),
     );
   }
 }

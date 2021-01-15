@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gcg_calculator_collection/common/common.dart';
 import 'common.dart';
 
 class BatteryCalculator extends StatelessWidget {
@@ -10,6 +11,7 @@ class BatteryCalculator extends StatelessWidget {
         title: Text("팬텀 전력 계산기"),
       ),
       body: BatteryCalculatorForm(),
+      floatingActionButton: manualLinkButton(),
     );
   }
 }
