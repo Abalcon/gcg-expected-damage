@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:gcg_calculator_collection/common/common.dart';
-import 'common.dart';
 
 class ExpectedDamage extends StatelessWidget {
   @override
@@ -13,7 +12,7 @@ class ExpectedDamage extends StatelessWidget {
         title: Text("대미지 배율 기댓값 계산"),
       ),
       body: ExpectedDamageForm(),
-      floatingActionButton: manualLinkButton(),
+      floatingActionButton: manualLinkButton(context),
     );
   }
 }

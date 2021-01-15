@@ -149,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: manualLinkButton(),
+      floatingActionButton: manualLinkButton(context),
     );
   }
 }

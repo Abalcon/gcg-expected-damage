@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gcg_calculator_collection/common/common.dart';
-import 'common.dart';
 
 class ScoreCalculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ScoreCalculatorDetail(),
-      floatingActionButton: manualLinkButton(),
+      floatingActionButton: manualLinkButton(context),
     );
   }
 }
